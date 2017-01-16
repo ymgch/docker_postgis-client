@@ -4,13 +4,13 @@ MAINTAINER yamaguchi@vic.co.jp
 
 WORKDIR /tmp
 
-ENV GEOS_VER=3.5.1
-ENV PROJ_VER=4.9.3
+ENV GEOS_VER 3.5.1
+ENV PROJ_VER 4.9.3
 
 RUN curl http://download.osgeo.org/geos/geos-${GEOS_VER}.tar.bz2 | tar jxf - \
  && cd geos-${GEOS_VER} \
  && ./configure \
- && make -j \
+ && make \
  && make install \
  && cd .. \
  && rm -rf geos-${GEOS_VER}
@@ -18,7 +18,7 @@ RUN curl http://download.osgeo.org/geos/geos-${GEOS_VER}.tar.bz2 | tar jxf - \
 RUN curl http://download.osgeo.org/proj/proj-${PROJ_VER}.tar.gz | tar zxf - \
  && cd proj-${PROJ_VER} \
  && ./configure \
- && make -j \
+ && make \
  && make install \
  && cd .. \
  && rm -rf proj-${PROJ_VER}
