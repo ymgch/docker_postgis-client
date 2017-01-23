@@ -1,4 +1,4 @@
-# Docker base image of PostGIS Client
+# Docker base image for PostGIS Client
 
 An image suited for Rails application which uses PostGIS embedding libraries.
 

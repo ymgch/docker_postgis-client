@@ -1,4 +1,4 @@
-FROM ruby:2.2.4
+FROM ruby:2.4
 
 MAINTAINER yamaguchi@vic.co.jp
 
