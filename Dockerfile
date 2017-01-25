@@ -14,7 +14,7 @@ RUN curl http://download.osgeo.org/geos/geos-${GEOS_VER}.tar.bz2 | tar jxf - \
  && make install \
  && cd .. \
  && rm -rf geos-${GEOS_VER}
- 
+
 RUN curl http://download.osgeo.org/proj/proj-${PROJ_VER}.tar.gz | tar zxf - \
  && cd proj-${PROJ_VER} \
  && ./configure \
@@ -34,7 +34,8 @@ RUN apt-get update \
  && update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10 \
  && npm install -g bower \
  && npm cache clean \
- && echo '{ "allow_root": true }' > /root/.bowerrc
+ && echo '{ "allow_root": true }' > /root/.bowerrc \
+ && gem update --system
 
 WORKDIR /
 CMD ["/bin/bash"]
