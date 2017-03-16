@@ -6,6 +6,7 @@ WORKDIR /tmp
 
 ENV GEOS_VER 3.5.1
 ENV PROJ_VER 4.9.3
+ENV GDAL_VER 2.1.2
 
 RUN curl http://download.osgeo.org/geos/geos-${GEOS_VER}.tar.bz2 | tar jxf - \
  && cd geos-${GEOS_VER} \
@@ -22,6 +23,16 @@ RUN curl http://download.osgeo.org/proj/proj-${PROJ_VER}.tar.gz | tar zxf - \
  && make install \
  && cd .. \
  && rm -rf proj-${PROJ_VER}
+
+RUN curl http://download.osgeo.org/gdal/${GDAL_VER}/gdal-${GDAL_VER}.tar.gz | tar zxf - \
+ && cd gdal-${GDAL_VER} \
+ && ./configure \
+ && make \
+ && make install \
+ && cd .. \
+ && rm -rf gdal-${GDAL_VER}
+
+RUN ldconfig
 
 RUN apt-get update \
  && apt-get install -y \
