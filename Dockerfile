@@ -34,6 +34,12 @@ RUN curl http://download.osgeo.org/gdal/${GDAL_VER}/gdal-${GDAL_VER}.tar.gz | ta
 
 RUN ldconfig
 
+RUN echo "deb http://deb.debian.org/debian unstable main contrib non-free" >> /etc/apt/sources.list \
+ && apt-get update \
+ && apt-get upgrade -y \
+ && apt-get autoremove -y \
+ && rm -rf /var/lib/apt/lists/*
+
 RUN apt-get update \
  && apt-get install -y \
         postgresql-client \
