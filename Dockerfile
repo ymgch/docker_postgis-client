@@ -49,7 +49,7 @@ RUN apt-get update \
         --no-install-recommends \
  && rm -rf /var/lib/apt/lists/* \
  && update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10 \
- && npm install -g bower \
+ && npm install -g bower uglify-es \
  && npm cache clean \
  && echo '{ "allow_root": true }' > /root/.bowerrc \
  && gem update --system
