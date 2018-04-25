@@ -41,12 +41,13 @@ RUN echo "deb http://deb.debian.org/debian unstable main contrib non-free" >> /e
  && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update \
- && apt-get install -y \
+ && apt-get install \
+        -y --no-install-recommends \
         postgresql-client \
         nodejs \
         npm \
         gfortran \
-        --no-install-recommends \
+        unzip \
  && rm -rf /var/lib/apt/lists/* \
  && update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10 \
  && npm install -g bower uglify-es \
